@@ -10,9 +10,9 @@
     .EXAMPLE
 		Get-FSMORole -Credential (Get-Credential -Credential "CONTOSO\Admin")
     .NOTES
-        Victor Silva
-        blog.victorsilva.com.uy
-        @vmsilvamolina
+        Author: Victor Silva
+        Blog: blog.victorsilva.com.uy
+        Twitter: @vmsilvamolina
 	#>
 	[CmdletBinding()]
 	Param (
