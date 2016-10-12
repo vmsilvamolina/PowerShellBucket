@@ -1,9 +1,11 @@
 <#
-.SYNOPSIS  Returns configuration changes for a VM
+.SYNOPSIS
+    Returns configuration changes for a VM
 .DESCRIPTION The function will return the list of configuration changes
     for a given Virtual Machine
-.NOTES  Author:  Victor Silva
-.NOTES  Site:    blog.victorsilva.com.uy
+.NOTES  
+    Author:  Victor Silva
+    Site:    blog.victorsilva.com.uy
 .PARAMETER Vm
   Virtual Machine object to query configuration changes
 .PARAMETER Hour
