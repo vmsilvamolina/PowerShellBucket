@@ -1,13 +1,13 @@
 function Get-GPOReplication {
 	<#
 	.SYNOPSIS
-		This function retrieve one or all the GPO and report their DSVersions and SysVolVersions (Users and Computers)
+		Esta función devuelve de una o todas las GPOs los valores de DSVersions y SysVolVersions (Usuarios y Computadoras)
 	.DESCRIPTION
-		This function retrieve one or all the GPO and report their DSVersions and SysVolVersions (Users and Computers)
+		Esta función devuelve de una o todas las GPOs los valores de DSVersions y SysVolVersions (Usuarios y Computadoras)
 	.PARAMETER GPOName
-		Specify the name of the GPO
+		Define el nombre de la GPO
 	.PARAMETER All
-		Specify that you want to retrieve all the GPO (slow if you have a lot of Domain Controllers)
+		Especifica que se requiere consultar todas las GPOS
 	.EXAMPLE
 		Get-GPOReplication -GPOName "Default Domain Policy"
 	.EXAMPLE
