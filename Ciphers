@@ -1,22 +1,3 @@
-<#
- 	.SYNOPSIS
-        Función para deshabilitar ciertos tipos de cifrados en Windows Server, preferentemente.
-    .DESCRIPTION
-        Función para deshabilitar ciertos tipos de cifrados en Windows Server, preferentemente.
-    .PARAMETER  Cipher
-        Indicar que cifrado se pretende deshabilitar de los disponibles en la función.
-    .EXAMPLE
-        Disable-Ciphers.ps1 -Cipher SSL3      
-#>
-
-Param
-(
-    [Parameter(Mandatory=$true)][ValidateSet('SSL3','RC4','All')][String] $Cipher
-)
-
-Write-Host 'Configuring IIS with SSL/TLS Deployment Best Practices...'
-Write-Host '--------------------------------------------------------------------------------'
- 
 # Disable Multi-Protocol Unified Hello
 New-Item 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\Multi-Protocol Unified Hello\Server' -Force | Out-Null
 New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\Multi-Protocol Unified Hello\Server' -name Enabled -value 0 -PropertyType 'DWord' -Force | Out-Null
@@ -43,12 +24,7 @@ New-Item 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client' -name Enabled -value 0 -PropertyType 'DWord' -Force | Out-Null
 New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client' -name 'DisabledByDefault' -value 1 -PropertyType 'DWord' -Force | Out-Null
 Write-Host 'SSL 2.0 has been disabled.'
- 
-# NOTE: If you disable SSL 3.0 the you may lock out some people still using
-# Windows XP with IE6/7. Without SSL 3.0 enabled, there is no protocol available
-# for these people to fall back. Safer shopping certifications may require that
-# you disable SSLv3.
-#
+
 # Disable SSL 3.0 (PCI Compliance) and enable "Poodle" protection
 New-Item 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server' -Force | Out-Null
 New-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server' -name Enabled -value 0 -PropertyType 'DWord' -Force | Out-Null
